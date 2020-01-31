@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="rootBorderPane" prefHeight="620.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.wizards.newexperiment.Wizard1Controller">
+    <bottom>
+        <fx:include fx:id="actionBar" source="actionBar.fxml" />
+    </bottom>
+    <center>
+      <VBox spacing="10.0">
+         <children>
+                <Label text="Selection Cycle Input">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+            <Label text="Primary Structure Information">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label minHeight="-Infinity" text="Specify the primer sequences as used during the selection. Note that the primers are to be specified in 5' to 3' orientation of the original aptamer as present during the selection, not based on the orientation in the sequencing data." wrapText="true">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Label text="5' Primer">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="primer5TextField" promptText="A,C,G, or T only" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label text="3' Primer">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="primer3TextField" promptText="A,C,G, or T only" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <Label text="Randomized Region Size">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label minHeight="-Infinity" text="Optionally, you can also specify the randomized region size. Either select and specify an exact value (this is mandatory if you do not specify a 3' primer) or a range (inclusive) for the length of the randomized region. If specified, all sequences which differ in length from the selected condition will be filtered out. If non of the checkboxes are selected, all aptamers regardless of their randomized region size will be accepted." wrapText="true">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <CheckBox fx:id="exactLengthCheckBox" mnemonicParsing="false">
+                     <graphic>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="Exact Length">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Spinner fx:id="randomizedRegionSizeSpinner" max="100" min="0" prefHeight="22.0" prefWidth="75.0" />
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </CheckBox>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label text="OR">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <HBox>
+                     <children>
+                        <CheckBox fx:id="rangeLengthCheckBox" mnemonicParsing="false">
+                           <graphic>
+                              <HBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <Label text="Specify Range">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label text="Min">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Spinner fx:id="randomizedRegionSizeLowerSpinner" max="100" min="0" prefHeight="22.0" prefWidth="75.0">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </Spinner>
+                                    <Label text="Max">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Spinner fx:id="randomizedRegionSizeUpperSpinner" max="100" min="0" prefHeight="22.0" prefWidth="75.0" />
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </CheckBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <Label text="Selection Cycles">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label minHeight="-Infinity" text="Add the selection cycles for which you have data. For each dataset, create a new entry by clicking on &quot;Add Selection Cycle&quot; and fill in the data. Note that Round Names must be unique and should not contain special characters and/or spaces." wrapText="true">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Button fx:id="addSelectionCycleButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#addSelectionCycleButtonAction" text="Add Selection Cycle">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Label fx:id="forwardReadsFileLabel" minWidth="-Infinity" text="Forward Reads File">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="forwardReadsFileTextField" editable="false" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button fx:id="forwardReadsFileButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#chooseForwardReadFileButtonAction" text="Choose">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="reverseReadsFileLabel" minWidth="-Infinity" text="Reverse Reads File">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="reverseReadsFileTextField" editable="false" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button fx:id="reverseReadsFileButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#chooseReverseReadFileButtonAction" text="Choose">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <StackPane style="-fx-background-color: red;" VBox.vgrow="ALWAYS">
+               <children>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER">
+                     <content>
+                        <VBox fx:id="selectionCycleContainers" spacing="5.0">
+                           <padding>
+                              <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </StackPane>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </VBox>
+    </center>
+</BorderPane>
